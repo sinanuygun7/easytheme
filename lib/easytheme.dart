@@ -16,13 +16,13 @@ class EasyTheme with ChangeNotifier{
   }
 
   // call class
-  EasyThemeList _list= EasyThemeList(themes: []);
-  ThemeData _currentthemedata= ThemeData.light();
-  ThemeMode _currentthememode=ThemeMode.light;
-  String _currentthemename='default';
+  late EasyThemeList _list;
+  late ThemeData _currentthemedata;
+  late ThemeMode _currentthememode;
+  late String _currentthemename;
 
   // variables
-  final List<EasyThemeValue> _themes;
+  late List<EasyThemeValue> _themes;
   late EasyThemeData _themedata;
 
   // functions
@@ -31,7 +31,10 @@ class EasyTheme with ChangeNotifier{
   ThemeMode get getThemeMode=> _currentthememode;
   String get getThemeName=> _currentthemename;
 
+  set changeThemeList(List<EasyThemeValue> themes)=> _themes=themes;
+
   void changeTheme(String name){
+    _list= EasyThemeList(themes: _themes);
     final EasyThemeFeature feature=_list.searchName(name);
     _themedata= EasyThemeData(features: feature);
     _currentthemename= name;
@@ -41,6 +44,8 @@ class EasyTheme with ChangeNotifier{
   }
 
   void activeTheme(){
+    _list= EasyThemeList(themes: _themes);
+    print(_list);
     final EasyThemeFeature feature=_list.searchName('default');
     _themedata= EasyThemeData(features: feature);
     _currentthemename='default';
