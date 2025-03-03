@@ -25,4 +25,8 @@ extension ThemeExtension on BuildContext{
   ThemeMode activeThemeMode(){
     return _easytheme.getThemeMode;
   }
+
+  String activeThemeName(){
+    return _easytheme.getThemeName;
+  }
 }

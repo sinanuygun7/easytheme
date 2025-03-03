@@ -13,7 +13,6 @@ class EasyTheme with ChangeNotifier{
     }
   ): _themes=themes{
     _list= EasyThemeList(themes: _themes);
-    activeTheme();
   }
 
   // call class
