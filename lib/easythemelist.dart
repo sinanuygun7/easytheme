@@ -9,7 +9,9 @@ class EasyThemeList{
     {
       required List<EasyThemeValue> themes
     }
-  ): _themes=themes;
+  ): _themes=themes{
+    _themes.addAll(themes);
+  }
 
   final List<EasyThemeValue> _themes;
   EasyThemeFeature searchName(String name){

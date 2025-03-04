@@ -11,7 +11,8 @@ class EasyTheme with ChangeNotifier{
     {
       required List<EasyThemeValue> themes
     }
-  ): _themes=themes{
+  ){
+    _themes.addAll(themes);
     _list= EasyThemeList(themes: _themes);
   }
 
@@ -31,7 +32,7 @@ class EasyTheme with ChangeNotifier{
   ThemeMode get getThemeMode=> _currentthememode;
   String get getThemeName=> _currentthemename;
 
-  set changeThemeList(List<EasyThemeValue> themes)=> _themes=themes;
+  set changeThemeList(List<EasyThemeValue> themes)=> _themes.addAll(themes);
 
   void changeTheme(String name){
     _list= EasyThemeList(themes: _themes);
@@ -44,8 +45,7 @@ class EasyTheme with ChangeNotifier{
   }
 
   void activeTheme(){
-    _list= EasyThemeList(themes: _themes);
-    print(_list);
+    _list = EasyThemeList(themes: _themes);
     final EasyThemeFeature feature=_list.searchName('default');
     _themedata= EasyThemeData(features: feature);
     _currentthemename='default';

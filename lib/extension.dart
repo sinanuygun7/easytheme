@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 
 extension ThemeExtension on BuildContext{
 
-  static List<EasyThemeValue> _themes=[];
+  static final List<EasyThemeValue> _themes=[];
   static EasyTheme _easytheme=EasyTheme(themes: []);
   static EasyThemeList _list=EasyThemeList(themes: _themes);
 
   void setThemes(List<EasyThemeValue> themes){
-    _themes=themes;
+    _themes.addAll(themes);
     _list=EasyThemeList(themes: _themes);
     _easytheme=EasyTheme(themes: _themes);
     _easytheme.activeTheme();
